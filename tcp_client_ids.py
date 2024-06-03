@@ -17,9 +17,15 @@ try:
     client_socket.sendall(message.encode())
     print(f"Sent '{message}' to the server")
 
+    # Receive data from the server
+    response = client_socket.recv(1024).decode()
+    print(f"Received '{response}' from the server")
+
 except Exception as e:
     print(f"Error: {e}")
 
 finally:
     # Close the client socket
     client_socket.close()
+
+
