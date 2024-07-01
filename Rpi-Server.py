@@ -16,7 +16,12 @@ def start_server():
     global server_socket
     # Create a socket object
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((get_local_ip_address(), 9999))
+    try:
+        server_socket.bind((get_local_ip_address(), 9999))
+    except Exception as e:
+        update_status(f"Failed to bind socket: {e}")
+        return
+
     server_socket.listen(5)
     update_status("Server listening on port 9999")
 
@@ -57,6 +62,7 @@ def on_start_button():
 
 def run_command(command):
     try:
+        # Use subprocess to run the command
         result = subprocess.run(command, shell=True, capture_output=True, text=True)
         output = result.stdout + result.stderr
         return output
@@ -81,6 +87,7 @@ root.resizable(False, True)
 
 main_frame = ttk.Frame(root, padding=10)
 main_frame.pack(expand=True, fill=tk.BOTH)
+
 
 command_prompt_label = ttk.Label(main_frame, text="Type commands:")
 command_prompt_label.pack()
