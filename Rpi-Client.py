@@ -3,6 +3,35 @@ import threading
 import tkinter as tk
 from tkinter import ttk, scrolledtext
 
+
+def read_key_from_file(file_path):
+    with open(file_path, 'r') as file:
+        key = file.read().strip()
+    return key
+
+def rc4(key, message):
+    global string_out
+    S = list(range(256))
+    j = 0
+    out = []
+
+    # Key Scheduling Algorithm (KSA)
+    for i in range(256):
+        j = (j + S[i] + ord(key[i % len(key)])) % 256
+        S[i], S[j] = S[j], S[i]
+
+    # Pseudorandom Generation Algorithm (PRGA)
+    i = j = 0
+    for char in message:
+        i = (i + 1) % 256
+        j = (j + S[i]) % 256
+        S[i], S[j] = S[j], S[i]
+        K = S[(S[i] + S[j]) % 256]
+        out.append(chr(ord(char) ^ K))
+    strReturn = ''.join(out)
+
+    return strReturn
+
 # Client setup
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_ip = '192.168.2.2'  # Replace with the actual server IP address
@@ -13,6 +42,8 @@ def receive_messages():
     while True:
         try:
             message = client_socket.recv(1024).decode('utf-8')
+            ## decrypt with rc4 same key
+            #message=rc4(read_key_from_file('rc4-key.txt'),client_socket.recv(1024).decode('utf-8'))
             if message:
                 print(f"Server: {message}")  # Print the message to the console
                 chat_window.config(state=tk.NORMAL)
@@ -25,7 +56,7 @@ def receive_messages():
             break
 
 def send_to_server(event=None):
-    message = message_to_server.get()
+    message =rc4(read_key_from_file('rc4-key.txt'),message_to_server.get())
     message_to_server.delete(0, tk.END)
     client_socket.sendall(message.encode('utf-8'))
 
