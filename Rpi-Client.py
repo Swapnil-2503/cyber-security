@@ -41,9 +41,8 @@ client_socket.connect((server_ip, port))
 def receive_messages():
     while True:
         try:
-            message = client_socket.recv(1024).decode('utf-8')
             ## decrypt with rc4 same key
-            #message=rc4(read_key_from_file('rc4-key.txt'),client_socket.recv(1024).decode('utf-8'))
+            message=rc4(read_key_from_file('rc4-key.txt'),client_socket.recv(1024).decode('utf-8'))
             if message:
                 print(f"Server: {message}")  # Print the message to the console
                 chat_window.config(state=tk.NORMAL)
@@ -68,8 +67,8 @@ receive_thread.start()
 # GUI setup
 root = tk.Tk()
 root.title("Cyber Security Client")
-screen_width = 800
-screen_height = 800
+screen_width = 600
+screen_height = 600
 root.geometry(f"{screen_width}x{screen_height}")
 root.resizable(False, True)
 

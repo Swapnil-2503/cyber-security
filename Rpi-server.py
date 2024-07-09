@@ -36,7 +36,7 @@ def rc4(key, message):
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port = 80  # Using a higher port number to avoid potential permission issues
 
-server_ip = '192.168.2.3'  # Bind to all interfaces
+server_ip = '192.168.2.2'  # Bind to all interfaces
 server_socket.bind((server_ip, port))
 server_socket.listen(5)
 print(f"listning on  port 80 {server_ip}")
@@ -66,8 +66,8 @@ accept_thread.start()
 # GUI setup
 root = tk.Tk()
 root.title("Cyber Security Server")
-screen_width = 800
-screen_height = 800
+screen_width = 600
+screen_height = 600
 root.geometry(f"{screen_width}x{screen_height}")
 root.resizable(False, True)
 
