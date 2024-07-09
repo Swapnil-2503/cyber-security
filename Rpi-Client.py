@@ -5,7 +5,7 @@ from tkinter import ttk, scrolledtext
 
 # Client setup
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_ip = '192.168.100.224'  # Replace with the actual server IP address
+server_ip = '192.168.2.2'  # Replace with the actual server IP address
 port = 80
 client_socket.connect((server_ip, port))
 
