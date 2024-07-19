@@ -1,16 +1,21 @@
 # Cryptography Algorithms 
  
+Cryptography-Algorithms
 |
 |-- Asymmetric-Encryption
-   |-- RSA.py
-|-- Symetric-Encyption 
-   |-- rc4.py
-   |-- sDES.py
-   |-- TDES.py
-|-- Hashing 
-   |-- MD5.py
-   |-- SHA-256.py
+|   |-- RSA.py
+|
+|-- Symmetric-Encryption
+|   |-- rc4.py
+|   |-- sDES.py
+|   |-- TDES.py
+|
+|-- Hashing
+|   |-- MD5.py
+|   |-- SHA-256.py
+|
 |-- cryptography.md
+
 
 - Plain text: hello
 
