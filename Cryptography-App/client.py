@@ -134,6 +134,13 @@ def receive_files():
             break
 
 
+accept_thread1 = threading.Thread(target=receive_messages)
+accept_thread1.daemon = True
+accept_thread1.start()
+
+accept_thread2 = threading.Thread(target=receive_files)
+accept_thread2.daemon = True
+accept_thread2.start()
 
 def select_file():
     file_path = filedialog.askopenfilename(initialdir="/", title="Select a File")
@@ -151,15 +158,6 @@ def verify_sign():
     else:
         file_path_var1.set("InValid Signature")
 
-
-
-accept_thread1 = threading.Thread(target=receive_messages)
-accept_thread1.daemon = True
-accept_thread1.start()
-
-accept_thread2 = threading.Thread(target=receive_files)
-accept_thread2.daemon = True
-accept_thread2.start()
 
 
 # Create the main window
