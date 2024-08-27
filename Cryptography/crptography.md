@@ -1,30 +1,17 @@
-# Cryptography Algorithms 
- 
-Cryptography-Algorithms
-|
-|-- Asymmetric-Encryption
-|   |-- RSA.py
-|
-|-- Symmetric-Encryption
-|   |-- rc4.py
-|   |-- sDES.py
-|   |-- TDES.py
-|
-|-- Hashing
-|   |-- MD5.py
-|   |-- SHA-256.py
-|
-|-- cryptography.md
+# Cryptography Algorithms
+
+This repository contains Python implementations of various cryptographic algorithms for educational purposes.
+
+## Directory Structure
+
+Cryptography-Algorithms | |-- Asymmetric-Encryption | |-- RSA.py | |-- Digital-signature-key | |-- Symmetric-Encryption | |-- rc4.py | |-- sDES.py | |-- TDES.py
 
 
-- Plain text: hello
+### Asymmetric Encryption
+- **RSA.py**: Implements the RSA algorithm for secure data transmission.
+- **Digital-signature-key**: Contains keys and scripts related to digital signatures.
 
-- Cipher text: 374315ed9864f687d6d5144167944eb8|e10adc3949ba59abbe56e057f20f883e|h
- K
-
-## Asymetric Encryption
-
-## Symmetric Encryption
-
-## Hashing
-
+### Symmetric Encryption
+- **rc4.py**: Implements the RC4 stream cipher.
+- **sDES.py**: Provides a simplified version of the DES algorithm.
+- **TDES.py**: Implements Triple DES for enhanced security.
