@@ -6,21 +6,6 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
-# GUI setup
-root = tk.Tk()
-root.title("Phishing Attack Setup")
-
-# Log text widget setup
-log_frame = tk.Frame(root)
-log_frame.grid(row=2, column=0, columnspan=3, padx=10, pady=10, sticky="NSEW")
-
-log_text = tk.Text(log_frame, wrap='word', height=10, width=50)
-log_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-log_scroll = tk.Scrollbar(log_frame, orient='vertical', command=log_text.yview)
-log_scroll.pack(side=tk.RIGHT, fill='y')
-
-log_text.config(yscrollcommand=log_scroll.set)
 
 def log_message(message):
     log_text.insert(tk.END, message + '\n')
@@ -85,6 +70,25 @@ def on_button2_click():
         log_message("Node.js server started successfully.")
     except Exception as e:
         log_message(f"Error: {e}")
+
+
+
+# GUI setup
+root = tk.Tk()
+root.title("Phishing Attack Setup")
+
+# Log text widget setup
+log_frame = tk.Frame(root)
+log_frame.grid(row=2, column=0, columnspan=3, padx=10, pady=10, sticky="NSEW")
+
+log_text = tk.Text(log_frame, wrap='word', height=10, width=50)
+log_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+log_scroll = tk.Scrollbar(log_frame, orient='vertical', command=log_text.yview)
+log_scroll.pack(side=tk.RIGHT, fill='y')
+
+log_text.config(yscrollcommand=log_scroll.set)
+
 
 # Create an entry box with default text
 entry_box = tk.Entry(root)
